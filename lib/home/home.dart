@@ -4,6 +4,8 @@ import 'package:zetproject/detailHome/dashboard.dart';
 import 'package:zetproject/profil/deposit.dart';
 import 'package:zetproject/profil/history.dart';
 import 'package:zetproject/profil/withdraw.dart';
+import 'package:zetproject/subScreen/beli.dart';
+import 'package:zetproject/subScreen/listBeli.dart';
 import 'package:zetproject/textStyle.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -39,6 +41,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _modalBottomSheetMenuBayar(),
+        backgroundColor: Color(0xff058c42),
+        child: Icon(
+          Icons.card_travel,
+          color: Colors.white,
+        ),
+      ),
       backgroundColor: Colors.grey[100],
       body: SingleChildScrollView(
         child: Column(
@@ -1499,5 +1510,523 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
+  }
+
+  void _modalBottomSheetMenuBayar() {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(20),
+          ),
+        ),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        context: context,
+        builder: (builder) {
+          return Container(
+            height: 430.0,
+            color: Colors.transparent, //could change this to Color(0xFF737373),
+            //so you don't have to change MaterialApp canvasColor
+            child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(
+                      10.0,
+                    ),
+                    topRight: Radius.circular(
+                      10.0,
+                    ),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 25.0,
+                        right: 25,
+                        top: 15,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Transaksi",
+                                style: TitleSaham1(),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: Icon(
+                                  Icons.close,
+                                ),
+                                color: Colors.black,
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Jumlah Orders",
+                                style: ProfilTitle(),
+                              ),
+                              Text(
+                                "0",
+                                style: ProfilData(),
+                              )
+                            ],
+                          ),
+                          Divider(
+                            height: 15,
+                            color: Colors.grey,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Jumlah Trades",
+                                style: ProfilTitle(),
+                              ),
+                              Text(
+                                "0",
+                                style: ProfilData(),
+                              )
+                            ],
+                          ),
+                          Divider(
+                            height: 15,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Top Stocks",
+                                style: TitleSaham1(),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          SizedBox(
+                            height: 130,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 50,
+                                      child: Center(
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                'https://www.idx.co.id/Portals/0/StaticData/ListedCompanies/LogoEmiten/bbca.jpg',
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                        ),
+                                        color: Color(0xffffffff),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[200]!,
+                                            spreadRadius: 1,
+                                            offset: Offset(1, 2),
+                                            blurRadius: 1,
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(
+                                          50,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "BBCA",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Poppins",
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    RichText(
+                                      text: TextSpan(
+                                          text: "+20",
+                                          style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Poppins",
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: " (2,2%)",
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: "Poppins",
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 50,
+                                      child: Center(
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                'https://www.idx.co.id/Portals/0/StaticData/ListedCompanies/LogoEmiten/acst.jpg',
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                        ),
+                                        color: Color(0xffffffff),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[200]!,
+                                            spreadRadius: 1,
+                                            offset: Offset(1, 2),
+                                            blurRadius: 1,
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(
+                                          50,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "ACST",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Poppins",
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    RichText(
+                                      text: TextSpan(
+                                          text: "+20",
+                                          style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Poppins",
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: " (2,2%)",
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: "Poppins",
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 50,
+                                      child: Center(
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                'https://www.idx.co.id/Portals/0/StaticData/ListedCompanies/LogoEmiten/wskt.jpg',
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                        ),
+                                        color: Color(0xffffffff),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[200]!,
+                                            spreadRadius: 1,
+                                            offset: Offset(1, 2),
+                                            blurRadius: 1,
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(
+                                          50,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "WSKT",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Poppins",
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    RichText(
+                                      text: TextSpan(
+                                          text: "+20",
+                                          style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Poppins",
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: " (2,2%)",
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: "Poppins",
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 50,
+                                      child: Center(
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                'https://www.idx.co.id/Portals/0/StaticData/ListedCompanies/LogoEmiten/bksl.jpg',
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                        ),
+                                        color: Color(0xffffffff),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[200]!,
+                                            spreadRadius: 1,
+                                            offset: Offset(1, 2),
+                                            blurRadius: 1,
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(
+                                          50,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "BKSL",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Poppins",
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    RichText(
+                                      text: TextSpan(
+                                          text: "+20",
+                                          style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Poppins",
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: " (2,2%)",
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: "Poppins",
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 70,
+                      width: MediaQuery.of(context).size.width / 1,
+                      decoration: BoxDecoration(color: Colors.white),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 25,
+                          right: 25,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () => _modalBottomSheetMenuBayar(),
+                              // Navigator.of(context, rootNavigator: true).push(
+                              //   PageTransition(
+                              //     type: PageTransitionType.fade,
+                              //     child: Jual(),
+                              //   ),
+                              // );
+                              // },
+                              child: Container(
+                                child: Center(
+                                  child: Text(
+                                    "Jual",
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontFamily: "Nunito",
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                height: 45,
+                                width: MediaQuery.of(context).size.width / 2.5,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  // color: Color(
+                                  //   0xff00aa13,
+                                  // ),
+                                  border: Border.all(
+                                    color: Color(
+                                      0xff00aa13,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context, rootNavigator: true).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: ListBeli(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                child: Center(
+                                  child: Text(
+                                    "Beli",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "Nunito",
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                height: 45,
+                                width: MediaQuery.of(context).size.width / 2.5,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Color(0xff058c42),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+          );
+        });
   }
 }

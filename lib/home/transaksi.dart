@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:zetproject/subScreen/beli.dart';
 import 'package:zetproject/subScreen/listBeli.dart';
 import 'package:zetproject/textStyle.dart';
 
@@ -31,6 +33,15 @@ class _TransaksiState extends State<Transaksi>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _modalBottomSheetMenuBayar(),
+        backgroundColor: Color(0xff058c42),
+        child: Icon(
+          Icons.card_travel,
+          color: Colors.white,
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Color(
           0xffffffff,
@@ -44,13 +55,135 @@ class _TransaksiState extends State<Transaksi>
           ),
         ),
         title: Text(
-          "Transaksi",
+          "Riwayat Transaksi",
           style: TextStyle(
             color: Colors.black,
             fontFamily: "Poppins",
             fontWeight: FontWeight.w600,
             fontSize: 18,
           ),
+        ),
+        bottom: TabBar(
+          indicatorSize: TabBarIndicatorSize.tab,
+          unselectedLabelColor: Colors.grey[300],
+          unselectedLabelStyle: TextStyle(
+            color: Colors.grey,
+          ),
+          isScrollable: true,
+          indicatorWeight: 0.9,
+          indicatorColor: Color(0xff058c42),
+          tabs: [
+            Tab(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    Icons.task_alt,
+                    color: Colors.green,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Order List",
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontFamily: "Nunito"),
+                  ),
+                ],
+              ),
+            ),
+            Tab(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    Icons.switch_camera_outlined,
+                    color: Colors.green,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Trade List",
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontFamily: "Nunito"),
+                  ),
+                ],
+              ),
+            ),
+            Tab(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    Icons.assignment_late_outlined,
+                    color: Colors.green,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Amend",
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontFamily: "Nunito"),
+                  ),
+                ],
+              ),
+            ),
+            Tab(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    Icons.play_for_work_outlined,
+                    color: Colors.green,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Withdraw",
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontFamily: "Nunito"),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              children: [
+                Tab(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.savings_outlined,
+                        color: Colors.green,
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        "Tab 5",
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontFamily: "Nunito"),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+          controller: _controller,
         ),
       ),
       body: SingleChildScrollView(
@@ -61,489 +194,6 @@ class _TransaksiState extends State<Transaksi>
           ),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  // left: 15.0,
-                  // right: 15,
-                  top: 15,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Stack(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.of(context, rootNavigator: true).push(
-                              MaterialPageRoute(
-                                builder: (context) => ListBeli(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 20.0,
-                                right: 20,
-                                top: 8,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Beli Saham",
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16,
-                                      fontFamily: "Poppins",
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 15,
-                                  ),
-                                  Text(
-                                    "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.",
-                                    maxLines: 4,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: "Nunito",
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            margin: EdgeInsets.only(
-                              right: 3,
-                            ),
-                            height: 120,
-                            width: MediaQuery.of(context).size.width / 2.5,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                // gradient: LinearGradient(
-                                //   colors: [
-                                //     const Color(0xff16db65),
-                                //     const Color(0xff058c42),
-                                //   ],
-                                //   begin: FractionalOffset.topCenter,
-                                //   end: FractionalOffset.bottomCenter,
-                                // ),
-                                borderRadius: BorderRadius.circular(
-                                  8,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey[300]!,
-                                    spreadRadius: 1,
-                                    blurRadius: 1,
-                                    offset: Offset(
-                                      1,
-                                      2,
-                                    ),
-                                  ),
-                                ]),
-                          ),
-                        ),
-                        Container(
-                          height: 120,
-                          width: 8,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                const Color(0xff16db65),
-                                const Color(0xff058c42),
-                              ],
-                              begin: FractionalOffset.topCenter,
-                              end: FractionalOffset.bottomCenter,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(
-                                8,
-                              ),
-                              bottomLeft: Radius.circular(
-                                8,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              left: 20.0,
-                              right: 20,
-                              top: 8,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Jual Saham",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Text(
-                                  "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.",
-                                  maxLines: 4,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: "Nunito",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          height: 120,
-                          width: MediaQuery.of(context).size.width / 2.5,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              // gradient: LinearGradient(
-                              //   colors: [
-                              //     const Color(0xff16db65),
-                              //     const Color(0xff058c42),
-                              //   ],
-                              //   begin: FractionalOffset.topCenter,
-                              //   end: FractionalOffset.bottomCenter,
-                              // ),
-                              borderRadius: BorderRadius.circular(
-                                8,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey[300]!,
-                                  spreadRadius: 1,
-                                  blurRadius: 1,
-                                  offset: Offset(
-                                    1,
-                                    2,
-                                  ),
-                                ),
-                              ]),
-                        ),
-                        Container(
-                          height: 120,
-                          width: 8,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                const Color(0xff16db65),
-                                const Color(0xff058c42),
-                              ],
-                              begin: FractionalOffset.topCenter,
-                              end: FractionalOffset.bottomCenter,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(
-                                8,
-                              ),
-                              bottomLeft: Radius.circular(
-                                8,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Info Akun",
-                    style: Parent(),
-                  ),
-                  // Icon(Icons.ac_unit_sharp,),
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Column(
-                children: [
-                  Stack(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Saldo RDN",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontFamily: "Nunito",
-                                  fontSize: 14,
-                                ),
-                              ),
-                              Text(
-                                "Rp. 64.455.000",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontFamily: "Nunito",
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              "Equity",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontFamily: "Nunito",
-                                fontSize: 14,
-                              ),
-                            ),
-                            Text(
-                              "Rp. 124.245.000",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: "Nunito",
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Stack(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Pending Buys",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontFamily: "Nunito",
-                                  fontSize: 14,
-                                ),
-                              ),
-                              Text(
-                                "Rp. 64.455.000",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontFamily: "Nunito",
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              "Total Return",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontFamily: "Nunito",
-                                fontSize: 14,
-                              ),
-                            ),
-                            Text(
-                              "Rp. 124.245.000",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: "Nunito",
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Data Transaksi",
-                    style: Parent(),
-                  ),
-                  // Icon(Icons.ac_unit_sharp,),
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TabBar(
-                indicatorSize: TabBarIndicatorSize.tab,
-                unselectedLabelColor: Colors.black,
-                labelColor: Colors.red,
-                isScrollable: true,
-                indicatorPadding: EdgeInsets.only(
-                  left: 30,
-                  right: 30,
-                ),
-                indicatorColor: Colors.black,
-                labelPadding: EdgeInsets.only(
-                  left: 8,
-                ),
-                tabs: [
-                  Tab(
-                    child: Container(
-                      height: 30,
-                      width: 80,
-                      child: Center(
-                        child: Text(
-                          "Order List",
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontFamily: "Nunito"),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          8,
-                        ),
-                        border: Border.all(
-                          color: Color(0xff00aa13),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Tab(
-                    child: Container(
-                      height: 30,
-                      width: 80,
-                      child: Center(
-                        child: Text(
-                          "Trade List",
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontFamily: "Nunito"),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          8,
-                        ),
-                        border: Border.all(
-                          color: Color(0xff00aa13),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Tab(
-                    child: Container(
-                      height: 30,
-                      width: 80,
-                      child: Center(
-                        child: Text(
-                          "Amend",
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontFamily: "Nunito"),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          8,
-                        ),
-                        border: Border.all(
-                          color: Color(0xff00aa13),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Tab(
-                    child: Container(
-                      height: 30,
-                      width: 80,
-                      child: Center(
-                        child: Text(
-                          "Withdraw",
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontFamily: "Nunito"),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          8,
-                        ),
-                        border: Border.all(
-                          color: Color(0xff00aa13),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Tab(
-                    child: Container(
-                      height: 30,
-                      width: 80,
-                      child: Center(
-                        child: Text(
-                          "Tab 5",
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontFamily: "Nunito"),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          8,
-                        ),
-                        border: Border.all(
-                          color: Color(0xff00aa13),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-                controller: _controller,
-              ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 2.5,
                 child: TabBarView(
@@ -1498,6 +1148,524 @@ class _TransaksiState extends State<Transaksi>
         ),
       ),
     );
+  }
+
+  void _modalBottomSheetMenuBayar() {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(20),
+          ),
+        ),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        context: context,
+        builder: (builder) {
+          return Container(
+            height: 430.0,
+            color: Colors.transparent, //could change this to Color(0xFF737373),
+            //so you don't have to change MaterialApp canvasColor
+            child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(
+                      10.0,
+                    ),
+                    topRight: Radius.circular(
+                      10.0,
+                    ),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 25.0,
+                        right: 25,
+                        top: 15,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Transaksi",
+                                style: TitleSaham1(),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: Icon(
+                                  Icons.close,
+                                ),
+                                color: Colors.black,
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Jumlah Orders",
+                                style: ProfilTitle(),
+                              ),
+                              Text(
+                                "0",
+                                style: ProfilData(),
+                              )
+                            ],
+                          ),
+                          Divider(
+                            height: 15,
+                            color: Colors.grey,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Jumlah Trades",
+                                style: ProfilTitle(),
+                              ),
+                              Text(
+                                "0",
+                                style: ProfilData(),
+                              )
+                            ],
+                          ),
+                          Divider(
+                            height: 15,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Top Stocks",
+                                style: TitleSaham1(),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          SizedBox(
+                            height: 130,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 50,
+                                      child: Center(
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                'https://www.idx.co.id/Portals/0/StaticData/ListedCompanies/LogoEmiten/bbca.jpg',
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                        ),
+                                        color: Color(0xffffffff),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[200]!,
+                                            spreadRadius: 1,
+                                            offset: Offset(1, 2),
+                                            blurRadius: 1,
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(
+                                          50,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "BBCA",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Poppins",
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    RichText(
+                                      text: TextSpan(
+                                          text: "+20",
+                                          style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Poppins",
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: " (2,2%)",
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: "Poppins",
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 50,
+                                      child: Center(
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                'https://www.idx.co.id/Portals/0/StaticData/ListedCompanies/LogoEmiten/acst.jpg',
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                        ),
+                                        color: Color(0xffffffff),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[200]!,
+                                            spreadRadius: 1,
+                                            offset: Offset(1, 2),
+                                            blurRadius: 1,
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(
+                                          50,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "ACST",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Poppins",
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    RichText(
+                                      text: TextSpan(
+                                          text: "+20",
+                                          style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Poppins",
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: " (2,2%)",
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: "Poppins",
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 50,
+                                      child: Center(
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                'https://www.idx.co.id/Portals/0/StaticData/ListedCompanies/LogoEmiten/wskt.jpg',
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                        ),
+                                        color: Color(0xffffffff),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[200]!,
+                                            spreadRadius: 1,
+                                            offset: Offset(1, 2),
+                                            blurRadius: 1,
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(
+                                          50,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "WSKT",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Poppins",
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    RichText(
+                                      text: TextSpan(
+                                          text: "+20",
+                                          style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Poppins",
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: " (2,2%)",
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: "Poppins",
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 50,
+                                      child: Center(
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                'https://www.idx.co.id/Portals/0/StaticData/ListedCompanies/LogoEmiten/bksl.jpg',
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey,
+                                        ),
+                                        color: Color(0xffffffff),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[200]!,
+                                            spreadRadius: 1,
+                                            offset: Offset(1, 2),
+                                            blurRadius: 1,
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(
+                                          50,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "BKSL",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Poppins",
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    RichText(
+                                      text: TextSpan(
+                                          text: "+20",
+                                          style: TextStyle(
+                                            color: Colors.green,
+                                            fontFamily: "Poppins",
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: " (2,2%)",
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: "Poppins",
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 70,
+                      width: MediaQuery.of(context).size.width / 1,
+                      decoration: BoxDecoration(color: Colors.white),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 25,
+                          right: 25,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () => _modalBottomSheetMenuBayar(),
+                              // Navigator.of(context, rootNavigator: true).push(
+                              //   PageTransition(
+                              //     type: PageTransitionType.fade,
+                              //     child: Jual(),
+                              //   ),
+                              // );
+                              // },
+                              child: Container(
+                                child: Center(
+                                  child: Text(
+                                    "Jual",
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontFamily: "Nunito",
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                height: 45,
+                                width: MediaQuery.of(context).size.width / 2.5,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  // color: Color(
+                                  //   0xff00aa13,
+                                  // ),
+                                  border: Border.all(
+                                    color: Color(
+                                      0xff00aa13,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context, rootNavigator: true).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: ListBeli(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                child: Center(
+                                  child: Text(
+                                    "Beli",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "Nunito",
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                height: 45,
+                                width: MediaQuery.of(context).size.width / 2.5,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Color(0xff058c42),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+          );
+        });
   }
 }
 
