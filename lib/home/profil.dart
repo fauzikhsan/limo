@@ -1612,7 +1612,7 @@ class _ProfilState extends State<Profil> {
                               child: Container(
                                 child: Center(
                                   child: Text(
-                                    "Beli",
+                                    "Bell",
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontFamily: "Nunito",
