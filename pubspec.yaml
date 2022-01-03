@@ -23,6 +23,8 @@ flutter_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  get: ^4.3.8
+
   persistent_bottom_nav_bar: ^4.0.2 
   chart_sparkline: ^1.0.5
   shimmer: ^2.0.0
@@ -40,18 +42,21 @@ dev_dependencies:
   shared_preferences: ^2.0.7
   bubble: ^1.2.1
   http: ^0.13.1
+  chewie: ^1.2.2  
+  google_fonts: ^2.1.1
+  animate_do: ^2.0.0
 
   
   
   
 flutter:
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
-  uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
+    - images/banner.png
+    - images/google.png
+    - images/empty.png
+    - images/discover.png
+    - images/discover2.png
+    - images/discover3.png
     - images/logo.jpg
     - images/discover1.png
     - images/chart.jpg
@@ -59,6 +64,7 @@ flutter:
     - images/danadarurat.png
     - images/danapensiun.png
     - images/khabib.jpeg
+    - images/nodata.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

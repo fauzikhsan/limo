@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zetproject/onboarding/onBoardingPage.dart';
+import 'package:zetproject/controller/onboard.dart';
+import 'package:zetproject/screen/onboarding/onBoardingPage.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,13 +10,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         /* dark theme settings */
       ),
-      home: OnBoardingPage(),
+      home: LearnFlutter(),
     );
   }
 }
